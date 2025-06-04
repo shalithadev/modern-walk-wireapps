@@ -40,12 +40,12 @@ export default async function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <CategoryCard
-              href="/mens-clothing"
+              href="/category/mens-clothing"
               category="Men's Clothing"
               className="bg-primary"
             />
             <CategoryCard
-              href="/womens-clothing"
+              href="/category/womens-clothing"
               category="Women's Clothing"
               className="bg-secondary"
             />
