@@ -23,12 +23,12 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="container py-14 space-y-12">
+      <div className="container px-4 md:px-0 py-14 space-y-14">
         {/* Flash Sale section */}
         <section className="space-y-10">
           <h2 className="text-3xl font-bold">Flash Sale</h2>
 
-          <div className="grid grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {flashSaleProducts?.length > 0 &&
               flashSaleProducts.map((item) => (
                 <ProductCard key={item.id} product={item} />
@@ -40,9 +40,14 @@ export default async function Home() {
         <section className="space-y-10">
           <h2 className="text-3xl font-bold">Categories</h2>
 
-          <div className="grid grid-cols-2 gap-10">
-            <CategoryCard category="Men's Clothing" className="bg-primary" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             <CategoryCard
+              href="/mens-clothing"
+              category="Men's Clothing"
+              className="bg-primary"
+            />
+            <CategoryCard
+              href="/womens-clothing"
               category="Women's Clothing"
               className="bg-secondary"
             />
