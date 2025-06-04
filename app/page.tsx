@@ -1,67 +1,29 @@
 import type { Metadata } from "next";
 import CategoryCard from "@/components/category-card";
 import ProductCard from "@/components/product-card";
+import { MENS_CLOTHING } from "@/lib/constants";
+import { api } from "@/lib/api";
+import { Product } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Modern Walk | Home",
   description: "The fashion retail store for the modern",
 };
 
-const flashSaleProducts = [
-  {
-    id: 1,
-    title: "Men T-Shirt",
-    price: 350,
-    description: "This is some dummy description",
-    category: "men's clothing",
-    image: "/placeholder.svg",
-    rating: {
-      rate: 5,
-      count: 5,
-    },
-  },
-  {
-    id: 2,
-    title: "Lady Blouse",
-    price: 350,
-    description: "This is some dummy description",
-    category: "women's clothing",
-    image: "/placeholder.svg",
-    rating: {
-      rate: 5,
-      count: 5,
-    },
-  },
-  {
-    id: 3,
-    title: "Men T-Shirt",
-    price: 350,
-    description: "This is some dummy description",
-    category: "men's clothing",
-    image: "/placeholder.svg",
-    rating: {
-      rate: 5,
-      count: 5,
-    },
-  },
-  {
-    id: 4,
-    title: "Lady Blouse",
-    price: 350,
-    description: "This is some dummy description",
-    category: "women's clothing",
-    image: "/placeholder.svg",
-    rating: {
-      rate: 5,
-      count: 5,
-    },
-  },
-];
+// export const dynamic = "force-dynamic";
 
 export default async function Home() {
+  const flashSaleProducts = await api
+    .get(`products/category/${MENS_CLOTHING}`, {
+      searchParams: { limit: "4" },
+    })
+    .json<Product[]>();
+
+  console.log(flashSaleProducts);
+
   return (
     <main className="flex flex-col items-center">
-      <div className="container py-14 space-y-14">
+      <div className="container py-14 space-y-12">
         {/* Flash Sale section */}
         <section className="space-y-10">
           <h2 className="text-3xl font-bold">Flash Sale</h2>
