@@ -12,6 +12,7 @@
     "clsx": "^2.1.1",
     "ky": "^1.8.1",
     "next": "15.3.3",
+    "nextjs-toploader": "^3.8.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^3.3.0"

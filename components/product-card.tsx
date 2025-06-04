@@ -44,9 +44,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           getCardBgColor(product.category)
         )}
       >
-        <div className="text-[#0E42FD] font-bold text-xl">
-          Rs {product.price}
-        </div>
+        <div className="text-mw-blue font-bold text-xl">Rs {product.price}</div>
         <div className="text-wrap text-sm max-w-48 line-clamp-4">
           {product.description}
         </div>

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 import Header from "@/components/header";
 import { roboto, roboto_mono } from "@/app/fonts";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Modern Walk",
@@ -23,6 +24,7 @@ export default function RootLayout({
           "font-sans min-h-screen"
         )}
       >
+        <NextTopLoader color="#2BD9AF" />
         <Header title="Modern Walk" />
         {children}
       </body>
