@@ -19,8 +19,6 @@ export default async function Home() {
     })
     .json<Product[]>();
 
-  console.log(flashSaleProducts);
-
   return (
     <main className="flex flex-col items-center">
       <div className="container px-4 md:px-0 py-14 space-y-14">

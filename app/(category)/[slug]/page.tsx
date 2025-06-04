@@ -1,19 +1,45 @@
+import type { Metadata } from "next";
 import ProductsNotAvailableCard from "@/components/products-not-available-card";
 import ProductCard from "@/components/product-card";
 import { api } from "@/lib/api";
 import { MENS_CLOTHING, WOMENS_CLOTHING } from "@/lib/constants";
 import type { Product } from "@/lib/types";
+import { capitalizeWords } from "@/lib/utils";
 
 const MENS_CLOTHING_SLUG = "mens-clothing";
 const WOMENS_CLOTHING_SLUG = "womens-clothing";
 
+const getCategoryBySlug = (slug: string) => {
+  switch (slug) {
+    case MENS_CLOTHING_SLUG:
+      return MENS_CLOTHING;
+    case WOMENS_CLOTHING_SLUG:
+      return WOMENS_CLOTHING;
+    default:
+      return undefined;
+  }
+};
+
 type CategoryPageProps = {
-  params: {
-    slug: string;
+  params: Promise<{ slug: string }>;
+};
+
+export const generateMetadata = async ({
+  params,
+}: CategoryPageProps): Promise<Metadata> => {
+  const { slug } = await params;
+
+  return {
+    title: `Modern Walk | ${capitalizeWords(
+      getCategoryBySlug(slug) ?? slug.replace("-", " ")
+    )}`,
+    description: "The fashion retail store for the modern",
   };
 };
 
-const CategoryPage = async ({ params: { slug } }: CategoryPageProps) => {
+const CategoryPage = async ({ params }: CategoryPageProps) => {
+  const { slug } = await params;
+
   const getCategoryBySlug = (slug: string) => {
     switch (slug) {
       case MENS_CLOTHING_SLUG:
