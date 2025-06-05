@@ -53,7 +53,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
 
   const categoryProducts = await api
     .get(`products/category/${getCategoryBySlug(slug)}`, {
-      searchParams: { limit: "8" },
+      searchParams: { limit: "8", sort: "asc" },
     })
     .json<Product[]>();
 

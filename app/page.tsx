@@ -1,23 +1,37 @@
 import type { Metadata } from "next";
 import CategoryCard from "@/components/category-card";
 import ProductCard from "@/components/product-card";
-import { MENS_CLOTHING } from "@/lib/constants";
+import { MENS_CLOTHING, WOMENS_CLOTHING } from "@/lib/constants";
 import { api } from "@/lib/api";
 import { Product } from "@/lib/types";
+import { shuffleArray } from "@/lib/utils";
+
+const PAGE_SIZE = 4;
+const PAGE_SORT = "asc";
 
 export const metadata: Metadata = {
   title: "Modern Walk | Home",
   description: "The fashion retail store for the modern",
 };
 
-// export const dynamic = "force-dynamic";
-
 export default async function Home() {
-  const flashSaleProducts = await api
-    .get(`products/category/${MENS_CLOTHING}`, {
-      searchParams: { limit: "6", sort: "asc" },
-    })
-    .json<Product[]>();
+  const [mensProducts, womensProducts] = await Promise.all([
+    api
+      .get(`products/category/${MENS_CLOTHING}`, {
+        searchParams: { limit: PAGE_SIZE, sort: PAGE_SORT },
+      })
+      .json<Product[]>(),
+    api
+      .get(`products/category/${WOMENS_CLOTHING}`, {
+        searchParams: { limit: PAGE_SIZE, sort: PAGE_SORT },
+      })
+      .json<Product[]>(),
+  ]);
+
+  const flashSaleProducts = shuffleArray([
+    ...(mensProducts || []),
+    ...(womensProducts || []),
+  ]);
 
   return (
     <main className="flex flex-col items-center">
