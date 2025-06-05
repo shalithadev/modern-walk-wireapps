@@ -15,7 +15,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       case WOMENS_CLOTHING:
         return "bg-secondary";
       default:
-        return "bg-gray-500";
+        return "bg-gray-300";
     }
   };
 

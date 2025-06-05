@@ -15,13 +15,13 @@ export const metadata: Metadata = {
 export default async function Home() {
   const flashSaleProducts = await api
     .get(`products/category/${MENS_CLOTHING}`, {
-      searchParams: { limit: "6" },
+      searchParams: { limit: "6", sort: "asc" },
     })
     .json<Product[]>();
 
   return (
     <main className="flex flex-col items-center">
-      <div className="container px-4 md:px-0 py-14 space-y-12">
+      <div className="container px-6 md:px-0 py-14 space-y-12">
         {/* Flash Sale section */}
         <section className="space-y-10">
           <h2 className="text-3xl font-bold">Flash Sale</h2>

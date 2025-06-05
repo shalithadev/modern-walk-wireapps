@@ -59,7 +59,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
 
   return (
     <main className="flex flex-col items-center">
-      <div className="container py-14 space-y-14 px-4 md:px-0">
+      <div className="container py-14 space-y-14 px-6 md:px-0">
         <section className="space-y-10">
           <h2 className="text-3xl font-bold capitalize">
             {getCategoryBySlug(slug) ?? slug.replace("-", " ")}
@@ -67,7 +67,7 @@ const CategoryPage = async ({ params }: CategoryPageProps) => {
         </section>
 
         {categoryProducts?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
             {categoryProducts.map((item) => (
               <ProductCard key={item.id} product={item} />
             ))}
