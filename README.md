@@ -1,28 +1,42 @@
 # modern-walk-wireapps
 
-## The fashion retail store for the modern
+## Fashion Retail Store for the Modern Era
 
-Assessment for the senior font-end software engineer position in WireApps
+Assessment project for the Senior Front-End Software Engineer position at WireApps.
+
+---
 
 ## Getting Started
 
-### Available Scripts
+### Prerequisites
 
-First, install the dependencies:
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v22+)
+- [pnpm](https://pnpm.io/installation)
+- [Next.js](https://nextjs.org/)
+
+### Installation
+
+Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-Then, run the development server:
+### Running the Development Server
+
+Start the development server:
 
 ```bash
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
-For the production build, you need to run:
+### Building for Production
+
+Create a production build:
 
 ```bash
 pnpm build
@@ -30,8 +44,14 @@ pnpm build
 
 ---
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Roboto Google Font.
+## Features
 
-### Deployment on Vercel
+- Uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) for automatic Roboto font optimization.
+- Built with Next.js for server-side rendering and static site generation.
 
-- [wireapps-modern-walk.vercel.app](https://wireapps-modern-walk.vercel.app/)
+---
+
+## Deployment
+
+Deployed on Vercel:  
+[https://wireapps-modern-walk.vercel.app/](https://wireapps-modern-walk.vercel.app/)
