@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
 import CategoryCard from "@/components/category-card";
 import ProductCard from "@/components/product-card";
-import { MENS_CLOTHING, WOMENS_CLOTHING } from "@/lib/constants";
+import { MENS_CLOTHING, PAGE_SIZE, PAGE_SORT, WOMENS_CLOTHING } from "@/lib/constants";
 import { api } from "@/lib/api";
 import { Product } from "@/lib/types";
 import { shuffleArray } from "@/lib/utils";
-
-const PAGE_SIZE = 4;
-const PAGE_SORT = "asc";
 
 export const metadata: Metadata = {
   title: "Modern Walk | Home",

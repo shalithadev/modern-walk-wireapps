@@ -2,23 +2,12 @@ import type { Metadata } from "next";
 import ProductsNotAvailableCard from "@/components/products-not-available-card";
 import ProductCard from "@/components/product-card";
 import { api } from "@/lib/api";
-import { MENS_CLOTHING, WOMENS_CLOTHING } from "@/lib/constants";
+import { CATEGORIES } from "@/lib/constants";
 import type { Product } from "@/lib/types";
 import { capitalizeWords } from "@/lib/utils";
 
-const MENS_CLOTHING_SLUG = "mens-clothing";
-const WOMENS_CLOTHING_SLUG = "womens-clothing";
-
-const getCategoryBySlug = (slug: string) => {
-  switch (slug) {
-    case MENS_CLOTHING_SLUG:
-      return MENS_CLOTHING;
-    case WOMENS_CLOTHING_SLUG:
-      return WOMENS_CLOTHING;
-    default:
-      return undefined;
-  }
-};
+const getCategoryBySlug = (slug: string) =>
+  CATEGORIES.find(cat => cat.slug === slug)?.label;
 
 type CategoryPageProps = {
   params: Promise<{ slug: string }>;
@@ -39,17 +28,6 @@ export const generateMetadata = async ({
 
 const CategoryPage = async ({ params }: CategoryPageProps) => {
   const { slug } = await params;
-
-  const getCategoryBySlug = (slug: string) => {
-    switch (slug) {
-      case MENS_CLOTHING_SLUG:
-        return MENS_CLOTHING;
-      case WOMENS_CLOTHING_SLUG:
-        return WOMENS_CLOTHING;
-      default:
-        return undefined;
-    }
-  };
 
   const categoryProducts = await api
     .get(`products/category/${getCategoryBySlug(slug)}`, {
